@@ -39,6 +39,9 @@
     Notarize.prototype = {
         init: function () {
             this.buildContainer();
+            // var notes = $(document).find('.note');
+            // var arr = jQuery.makeArray(notes);
+            // console.log(arr);
             $wrapper=$(this.settings.wrapper);
             this.addToggle(this.settings.toggle);
             //eventually, add ability to initialize swipe toggle here
@@ -53,23 +56,25 @@
             var self = this;
             $(toggle).on('click.' + pluginName, function (e) {
                 e.preventDefault();
-                var tag = this.tagName;
-                var index = $(tag).index(this); 
-                self.showNote(index);
-                self.toggleNotes();
+                // var tag = this.tagName;
+                // var index = $(tag).index(this); 
+                // self.showNote(index);
+                self.toggleNotes(e);
             });  
         },
-        toggleNotes: function () {
+        toggleNotes: function (e) {
             if (this.is_nav_open && $doc.hasClass(this.settings.nav_class)) {
               this.initCloseNote();
             } else {
-              this.openNote();
+              this.openNote(e);
             }
         },
-        openNote: function () {
+        openNote: function (e) {
             $doc.addClass(this.settings.nav_class);
             $wrapper.width($doc.width() + 'px');
             this.is_nav_open = true;
+            target = e.target;
+            this.showNote(target);
             return false;
         },
         initCloseNote: function () {
@@ -94,12 +99,14 @@
             $('.notes-container').empty();
             $wrapper.width('');
         },
-        showNote: function(index) {
-          content = $('.note:eq(' + index + ')').text();
+        showNote: function(target) {
+          target = $(target).attr('href');
+          index = target.split('-')[1];
+          content = $('#note-' + index).text();
+          console.log(('#note-' + index));
           $('.notes-container').append(content);
         },
         removeNote: function() {
-          alert('empty!');
           $('.notes-container').empty();
         }
     };
