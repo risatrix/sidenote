@@ -103,7 +103,6 @@
         },
         showNote: function(target) {
           var index = $(target).attr('data-index');
-          console.log(index);      
           $('.notes-container p:eq('+ index + ')').addClass('active');
         }
     };
