@@ -88,8 +88,8 @@
                 this.closeNote(null);
               }
             }
-            this.removeNote();
             $doc.removeClass(this.settings.nav_class);
+            $('.notes-container').empty();
         },
         closeNote: function(e) {
             if (e && e.target === $wrapper) {
@@ -100,14 +100,11 @@
             $wrapper.width('');
         },
         showNote: function(target) {
+          pos = $(target).offset().top;
           target = $(target).attr('href');
           index = target.split('-')[1];
-          content = $('#note-' + index).text();
-          console.log(('#note-' + index));
-          $('.notes-container').append(content);
-        },
-        removeNote: function() {
-          $('.notes-container').empty();
+          $('#note-' + index + ' p').clone().appendTo('.notes-container');
+          $('.notes-container p').css('top', (pos + 'px'));
         }
     };
 

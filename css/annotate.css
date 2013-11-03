@@ -15,7 +15,13 @@ and set up the offcanvas menu underneat all the rest of the content*/
 	right: 0;
 	width: 250px;
 	z-index: -1; /*literally nothing should be lower than this menu*/
-    background: blue;
+}
+
+.notes-ready .notes-container p {
+    position: absolute;
+    margin: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
 }
 
 .notes-ready .content-wrapper {
