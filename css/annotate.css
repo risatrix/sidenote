@@ -25,6 +25,10 @@ and set up the offcanvas menu underneat all the rest of the content*/
     -webkit-margin-after: 0;
 }
 
+.notes-ready .notes-container p.active {
+    background-color: yellow;
+}
+
 .notes-ready .content-wrapper {
 	z-index: 5;
 	/*since the wrapper sits on top of the offcanvas, it is ideally not transparent */

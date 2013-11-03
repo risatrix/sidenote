@@ -43,6 +43,9 @@
             var arr = jQuery.makeArray(notes);
             $(arr).appendTo('.notes-container');
             $wrapper=$(this.settings.wrapper);
+            $('.fn').each (function(index){
+              $(this).attr('data-index', index);
+            }); 
             this.addToggle(this.settings.toggle);
             //eventually, add ability to initialize swipe toggle here
             $doc.addClass('notes-ready');
@@ -89,22 +92,19 @@
               }
             }
             $doc.removeClass(this.settings.nav_class);
-            $('.notes-container').empty();
+            $('.notes-container p').removeClass('active');
         },
         closeNote: function(e) {
             if (e && e.target === $wrapper) {
               $(document).off(transition_end, this.closeNote);
             }
             this.is_nav_open = false;
-            $('.notes-container').empty();
             $wrapper.width('');
         },
         showNote: function(target) {
-          pos = $(target).offset().top;
-          target = $(target).attr('href');
-          index = target.split('-')[1];
-          $('#note-' + index + ' p').clone().appendTo('.notes-container');
-          $('.notes-container p').css('top', (pos + 'px'));
+          var index = $(target).attr('data-index');
+          console.log(index);      
+          $('.notes-container p:eq('+ index + ')').addClass('active');
         }
     };
 
