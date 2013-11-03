@@ -39,9 +39,9 @@
     Notarize.prototype = {
         init: function () {
             this.buildContainer();
-            // var notes = $(document).find('.note');
-            // var arr = jQuery.makeArray(notes);
-            // console.log(arr);
+            var notes = $(document).find('.note p');
+            var arr = jQuery.makeArray(notes);
+            $(arr).appendTo('.notes-container');
             $wrapper=$(this.settings.wrapper);
             this.addToggle(this.settings.toggle);
             //eventually, add ability to initialize swipe toggle here
