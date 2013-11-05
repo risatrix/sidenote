@@ -42,6 +42,7 @@
             var notes = $(document).find('.note p');
             var arr = jQuery.makeArray(notes);
             $(arr).appendTo('.notes-container');
+
             $wrapper=$(this.settings.wrapper);
             $('.fn').each (function(index){
               $(this).attr('data-index', index);
