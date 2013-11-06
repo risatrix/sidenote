@@ -47,11 +47,19 @@
             var arr = jQuery.makeArray(notes);
             $doc.addClass('notes-ready');
             //TODO: figure out how the heck to get this to load at the right time!!
+            //Also refactor when not dumb
             $('.fn').each (function(index){
               $(this).attr('data-index', index);
               var pos = ($(this).offset().top);
               var note = $(notes[index]);
               $(note).appendTo('.notes-container').offset({top: pos, left: 'auto'});
+              if (index !=0) {
+                var prev_note = $(notes[index-1]);
+                var prev_note_pos = prev_note.offset().top + prev_note.height();
+                if (note.offset().top <= prev_note_pos) {
+                  note.css('background-color', 'red');
+                }
+              } 
             });
         },
         buildContainer: function (target_menu) {
