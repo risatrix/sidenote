@@ -55,9 +55,9 @@
               $(note).appendTo('.notes-container').offset({top: pos, left: 'auto'});
               if (index !=0) {
                 var prev_note = $(notes[index-1]);
-                var prev_note_pos = prev_note.offset().top + prev_note.height();
-                if (note.offset().top <= prev_note_pos) {
-                  note.css('background-color', 'red');
+                var prev_note_bottom = prev_note.offset().top + prev_note.height();
+                if (note.offset().top <= prev_note_bottom) {
+                  note.offset({top: prev_note_bottom + 5, left: 'auto'});
                 }
               } 
             });
