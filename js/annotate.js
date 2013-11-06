@@ -38,18 +38,21 @@
 
     Notarize.prototype = {
         init: function () {
+            $doc.addClass(this.settings.nav_class);
             this.buildContainer();
-            var notes = $(document).find('.note p');
-            var arr = jQuery.makeArray(notes);
-            $(arr).appendTo('.notes-container');
-
             $wrapper=$(this.settings.wrapper);
-            $('.fn').each (function(index){
-              $(this).attr('data-index', index);
-            }); 
             this.addToggle(this.settings.toggle);
             //eventually, add ability to initialize swipe toggle here
+            var notes = $(document).find('.note p');
+            var arr = jQuery.makeArray(notes);
             $doc.addClass('notes-ready');
+            //TODO: figure out how the heck to get this to load at the right time!!
+            $('.fn').each (function(index){
+              $(this).attr('data-index', index);
+              var pos = ($(this).offset().top);
+              var note = $(notes[index]);
+              $(note).appendTo('.notes-container').offset({top: pos, left: 'auto'});
+            });
         },
         buildContainer: function (target_menu) {
             offContent = '<div></div>';   

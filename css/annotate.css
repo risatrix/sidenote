@@ -9,7 +9,7 @@ When we know the offcanvas js is ready, we hide the target menu
 and set up the offcanvas menu underneat all the rest of the content*/
 
 .notes-ready .notes-container {
-	display: block;
+    min-height: 1050px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -19,7 +19,7 @@ and set up the offcanvas menu underneat all the rest of the content*/
 }
 
 .notes-ready .notes-container p {
- /*   position: absolute;*/
+    position: absolute;
     margin: 0;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
