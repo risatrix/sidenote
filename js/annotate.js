@@ -38,7 +38,6 @@
 
     Notarize.prototype = {
         init: function () {
-            $doc.addClass(this.settings.nav_class);
             this.buildContainer();
             $wrapper=$(this.settings.wrapper);
             this.addToggle(this.settings.toggle);
@@ -58,20 +57,17 @@
             var self = this;
             $(toggle).on('click.' + pluginName, function (e) {
                 e.preventDefault();
-                // var tag = this.tagName;
-                // var index = $(tag).index(this); 
-                // self.showNote(index);
                 self.toggleNotes(e);
             });  
         },
         toggleNotes: function (e) {
             if (this.is_nav_open && $doc.hasClass(this.settings.nav_class)) {
-              this.initCloseNote();
+              this.initCloseNotes();
             } else {
-              this.openNote(e);
+              this.openNotes(e);
             }
         },
-        openNote: function (e) {
+        openNotes: function (e) {
             $doc.addClass(this.settings.nav_class);
             $wrapper.width($doc.width() + 'px');
             this.is_nav_open = true;
@@ -79,23 +75,23 @@
             this.showNote(target);
             return false;
         },
-        initCloseNote: function () {
+        initCloseNotes: function () {
             if (this.is_nav_open == true) {
               // close navigation after transition or immediately
               var duration = (transition_end && transition_prop) ? 
                 parseFloat(window.getComputedStyle($wrapper[0], '')[transition_prop + 'Duration']) : 0;
               if (duration > 0) {
-                $(document).on('transition', this.closeNote);
+                $(document).on('transition', this.closeNotes);
               } else {
-                this.closeNote(null);
+                this.closeNotes(null);
               }
             }
             $doc.removeClass(this.settings.nav_class);
             $('.notes-container p').removeClass('active');
         },
-        closeNote: function(e) {
+        closeNotes: function(e) {
             if (e && e.target === $wrapper) {
-              $(document).off(transition_end, this.closeNote);
+              $(document).off(transition_end, this.closeNotes);
             }
             this.is_nav_open = false;
             $wrapper.width('');
