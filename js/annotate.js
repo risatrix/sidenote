@@ -43,29 +43,11 @@
             $wrapper=$(this.settings.wrapper);
             this.addToggle(this.settings.toggle);
             //eventually, add ability to initialize swipe toggle here
-            var notes = $(document).find('.note p');
-            var arr = jQuery.makeArray(notes);
             $doc.addClass('notes-ready');
-            //Position sidebar notes to align with text citationss
             //TODO: figure out how the heck to get this function to load at the right time!!
-            //Also refactor when not dumb
-            $('.fn').each (function(index){
-              $(this).attr('data-index', index);
-              var pos = ($(this).offset().top);
-              var note = $(notes[index]);
-              $(note).appendTo('.notes-container').offset({top: pos, left: 'auto'});
-              if (index !=0) {
-                var prev_note = $(notes[index-1]);
-                var prev_note_bottom = prev_note.offset().top + prev_note.height();
-                if (note.offset().top <= prev_note_bottom) {
-                  note.offset({top: prev_note_bottom + 5, left: 'auto'});
-                }
-              } 
-            });
-            //make sure notes column is tall enough to show all notes
-            var last_note = $('.notes-container p').last();
-            var rock_bottom = last_note.offset().top + last_note.height(); 
-            $('.notes-container').css('min-height', rock_bottom + 'px')       
+            //because the addClass should come dead last
+            this.alignNotes();
+            this.adjustColumn();   
           },
         buildContainer: function (target_menu) {
             offContent = '<div></div>';   
@@ -121,6 +103,30 @@
         showNote: function(target) {
           var index = $(target).attr('data-index');
           $('.notes-container p:eq('+ index + ')').addClass('active');
+        },
+        //Position sidebar notes to align with text citationss
+        alignNotes: function() {
+          var notes = $(document).find('.note p');
+          var arr = jQuery.makeArray(notes);
+          $('.fn').each (function(index){
+            $(this).attr('data-index', index);
+            var pos = ($(this).offset().top);
+            var note = $(notes[index]);
+            $(note).appendTo('.notes-container').offset({top: pos, left: 'auto'});
+            if (index !=0) {
+              var prev_note = $(notes[index-1]);
+              var prev_note_bottom = prev_note.offset().top + prev_note.height();
+              if (note.offset().top <= prev_note_bottom) {
+                note.offset({top: prev_note_bottom + 5, left: 'auto'});
+              }
+            } 
+          });
+        },
+        //make sure notes column is tall enough to show all notes
+        adjustColumn: function() {
+          var last_note = $('.notes-container p').last();
+          var rock_bottom = last_note.offset().top + last_note.height(); 
+          $('.notes-container').css('min-height', rock_bottom + 'px')    
         }
     };
 
