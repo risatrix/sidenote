@@ -46,7 +46,8 @@
             var notes = $(document).find('.note p');
             var arr = jQuery.makeArray(notes);
             $doc.addClass('notes-ready');
-            //TODO: figure out how the heck to get this to load at the right time!!
+            //Position sidebar notes to align with text citationss
+            //TODO: figure out how the heck to get this function to load at the right time!!
             //Also refactor when not dumb
             $('.fn').each (function(index){
               $(this).attr('data-index', index);
@@ -61,7 +62,11 @@
                 }
               } 
             });
-        },
+            //make sure notes column is tall enough to show all notes
+            var last_note = $('.notes-container p').last();
+            var rock_bottom = last_note.offset().top + last_note.height(); 
+            $('.notes-container').css('min-height', rock_bottom + 'px')       
+          },
         buildContainer: function (target_menu) {
             offContent = '<div></div>';   
             $('body').children().wrapAll('<div class="content-wrapper">');
