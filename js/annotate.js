@@ -31,6 +31,7 @@
         this._defaults = defaults;
         this._name = pluginName;
         this.is_nav_open = false; 
+        this.curr_index = 0;
         this.init();
     }
 
@@ -61,18 +62,24 @@
             });  
         },
         toggleNotes: function (e) {
-            if (this.is_nav_open && $doc.hasClass(this.settings.nav_class)) {
+          //TODO: find out why this.nav_is_open doesn't work here.
+          //orig condition: if (this.is_nav_open && $doc.hasClass(this.settings.nav_class))
+          index = $(e.target).attr('data-index');
+            if ($doc.hasClass(this.settings.nav_class) && index==this.curr_index) {
               this.initCloseNotes();
             } else {
               this.openNotes(e);
             }
+          $(e.target).toggleClass('active-note');
+          $(e.target).parents('p').siblings('p').children('a').removeClass('active-note'); 
+          $(e.target).siblings('a').removeClass('active-note'); 
         },
         openNotes: function (e) {
             $doc.addClass(this.settings.nav_class);
             $wrapper.width($doc.width() + 'px');
             this.is_nav_open = true;
             target = e.target;
-            this.showNote(target);
+            this.syncNote(target);
             return false;
         },
         initCloseNotes: function () {
@@ -96,9 +103,10 @@
             this.is_nav_open = false;
             $wrapper.width('');
         },
-        showNote: function(target) {
+        syncNote: function(target) {
           var index = $(target).attr('data-index');
-          $('.notes-container p:eq('+ index + ')').addClass('active');
+          $('.notes-container p:eq('+ index + ')').addClass('active').siblings().removeClass('active');
+          this.curr_index = index;
         },
         //Position sidebar notes to align with text citationss
         alignNotes: function() {

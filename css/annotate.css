@@ -8,6 +8,8 @@
 When we know the offcanvas js is ready, we hide the target menu 
 and set up the offcanvas menu underneat all the rest of the content*/
 
+.fn.active-note { background-color: blue; }
+
 .notes-ready .notes-container {
     min-height: 1050px;
 	position: absolute;
