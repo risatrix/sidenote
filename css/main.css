@@ -146,31 +146,6 @@ body {
     font-style: italic;
 }
 
-/* ===================
-    Colors
-   =================== */
-
-.header-container {
-    border-bottom: 20px solid #353242;
-}
-
-.footer-container,
-.main aside {
-    border-top: 20px solid #353242;
-}
-
-.header-container,
-.footer-container,
-.main aside {
-    background: #585C7A;
-}
-
-.title {
-    color: white;
-    float: left;
-}
-
-
 /* ==============
     MOBILE: Main
    ============== */
@@ -181,12 +156,6 @@ body {
 
 .main article h1 {
     font-size: 2em;
-}
-
-
-.footer-container footer {
-    color: white;
-    padding: 20px 0;
 }
 
 /* ===============
@@ -217,10 +186,10 @@ body {
     Maximal Width
    =============== */
 
-    .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
+   /* .wrapper {
+        width: 1026px;  1140px - 10% for margins 
         margin: 0 auto;
-    }
+    }*/
 }
 
 /* ==========================================================================
