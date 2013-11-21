@@ -110,7 +110,7 @@
         },
         //Position sidebar notes to align with text citationss
         alignNotes: function() {
-          var notes = $(document).find('.note p');
+          var notes = $(document).find('.note p').clone();
           var arr = jQuery.makeArray(notes);
           $('.fn').each (function(index){
             $(this).attr('data-index', index);
