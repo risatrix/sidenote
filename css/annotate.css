@@ -13,9 +13,15 @@ and set up the offcanvas menu underneat all the rest of the content*/
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 250px;
+	width: 290px;
 	z-index: -1; /*literally nothing should be lower than this menu*/
     overflow: hidden;
+    right: -100%;
+    transition: right 200ms ease;
+}
+
+.notes-on .notes-container { 
+     right: 0;
 }
 
 .notes-ready .notes-container p {
@@ -27,13 +33,14 @@ and set up the offcanvas menu underneat all the rest of the content*/
 
 .notes-ready .notes-container p.active {
     background-color: rgba(255, 255, 0, 0.22);
+    right: 0;
 }
 
 .notes-ready .content-wrapper {
 	z-index: 5;
 	/*since the wrapper sits on top of the offcanvas, it is ideally not transparent */
 	background-color: white; 
-	position: absolute;
+	position: relative;
 	top: 0;
 	right: 0;
     width: 100%;
@@ -63,9 +70,10 @@ and set up the offcanvas menu underneat all the rest of the content*/
 	}
 
 .csstransforms3d.csstransitions.notes-on .content-wrapper {
--webkit-transform: translate3d(-250px, 0, 0) scale3d(1, 1, 1);
--moz-transform: translate3d(-250px, 0, 0) scale3d(1, 1, 1);
--ms-transform: translate3d(-250px, 0, 0) scale3d(1, 1, 1);
--o-transform: translate3d(-250px, 0, 0) scale3d(1, 1, 1);
-transform: translate3d(-250px, 0, 0) scale3d(1, 1, 1);
+-webkit-transform: translate3d(-12%, 0, 0) scale3d(1, 1, 1);
+-moz-transform: translate3d(-12%, 0, 0) scale3d(1, 1, 1);
+-ms-transform: translate3d(-12%, 0, 0) scale3d(1, 1, 1);
+-o-transform: translate3d(-12%, 0, 0) scale3d(1, 1, 1);
+transform: translate3d(-12s%, 0, 0) scale3d(1, 1, 1);
+background-color: transparent;
 }

@@ -76,7 +76,7 @@
         },
         openNotes: function (e) {
             $doc.addClass(this.settings.nav_class);
-            $wrapper.width($doc.width() + 'px');
+            // $wrapper.width($doc.width() + 'px');
             this.is_nav_open = true;
             target = e.target;
             this.syncNote(target);
@@ -101,7 +101,7 @@
               $(document).off(transition_end, this.closeNotes);
             }
             this.is_nav_open = false;
-            $wrapper.width('');
+            // $wrapper.width('');
         },
         syncNote: function(target) {
           var index = $(target).attr('data-index');
