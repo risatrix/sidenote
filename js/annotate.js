@@ -71,8 +71,7 @@
               this.openNotes(e);
             }
           $(e.target).toggleClass('active-note');
-          $(e.target).parents('p').siblings('p').children('a').removeClass('active-note'); 
-          $(e.target).siblings('a').removeClass('active-note'); 
+          $('.fn').not(e.target).removeClass('active-note');
         },
         openNotes: function (e) {
             $doc.addClass(this.settings.nav_class);
