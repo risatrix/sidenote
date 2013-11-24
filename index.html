@@ -86,13 +86,13 @@
         </script>
         <script src="js/jquery-xscrolly.js"></script>
         <script>
-            $('p').xscrolly({
+            $('.fn').xscrolly({
+                throttle: 0,
+                offset: 250,
                 change: function($el) {
-                this.$active.removeClass('active');
-                $el.addClass('active');
-                },
-                unveil: function($el) {
-                $el.addClass('read');
+                  if ($(document.documentElement).hasClass('notes-on')) {  
+                        $el.click();
+                    }
                 }
             });
         </script>
