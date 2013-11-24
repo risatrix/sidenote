@@ -79,9 +79,22 @@
         </div> <!-- #main -->
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
         <script src="js/annotate.js"></script>
         <script>
-        $(document).footnote();
+            $(document).footnote();
+        </script>
+        <script src="js/jquery-xscrolly.js"></script>
+        <script>
+            $('p').xscrolly({
+                change: function($el) {
+                this.$active.removeClass('active');
+                $el.addClass('active');
+                },
+                unveil: function($el) {
+                $el.addClass('read');
+                }
+            });
         </script>
     </body>
 </html>
